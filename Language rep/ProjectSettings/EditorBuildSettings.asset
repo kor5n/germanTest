@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 7f4e6bcca0f1f40a18f6a93c7b1d5f6b
+  - enabled: 1
+    path: Assets/Scenes/Translate.unity
+    guid: 0c53270db5f404a43a4ba93306a7ae46
+  - enabled: 1
+    path: Assets/Scenes/diederdas.unity
+    guid: b92b0c8d69c6648f085d7ea5e614ebba
+  m_configObjects: {}
