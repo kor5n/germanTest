@@ -6,12 +6,14 @@ using UnityEngine.UI;
 
 public class WordTranslate : MonoBehaviour
 {
+    [Header("Components")]
     public Button showTranslate;
     public Button nextWord;
-    public static bool makeNew;
     public Text wordText;
-    public static int wordNum;
-    private List<string> wordList = new List<string> {"der Kopf", "huvud","der Mund", "mun","das Gesichte", "ansikte","der Arm", "arm","die Hand", "hand","der Finger",
+
+    private bool makeNew;
+    private int wordNum;
+    public static List<string> wordList = new List<string> {"der Kopf", "huvud","der Mund", "mun","das Gesichte", "ansikte","der Arm", "arm","die Hand", "hand","der Finger",
 
          "finger","die Schulter", "axel","der Rücken", "rygg","der Bauch", "mage","das Bein", "ben","tut weh", "gör ont","gebrochen", "brutit",
 

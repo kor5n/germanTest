@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/diederdas.unity
     guid: b92b0c8d69c6648f085d7ea5e614ebba
+  - enabled: 1
+    path: Assets/Scenes/CustomTranslate.unity
+    guid: 07320720b01684bc88b3feea586d0865
   m_configObjects: {}
