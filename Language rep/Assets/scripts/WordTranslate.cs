@@ -13,18 +13,14 @@ public class WordTranslate : MonoBehaviour
 
     private bool makeNew;
     private int wordNum;
-    public static List<string> wordList = new List<string> {"der Kopf", "huvud","der Mund", "mun","das Gesichte", "ansikte","der Arm", "arm","die Hand", "hand","der Finger",
-
-         "finger","die Schulter", "axel","der Rücken", "rygg","der Bauch", "mage","das Bein", "ben","tut weh", "gör ont","gebrochen", "brutit",
-
-         "das Knie", "knä","der Oberschenkel", "lår","der Fuß", "fot","der Zeh", "tå","die Zehen", "tår","die Backe", "kind",
-
-         "die Narbe", "ärr","das Ohr", "öra","die Haare", "hår","die Stirn", "panna","der Bart", "skägg","die Nase", "näsa",
-
-         "die Lippe", "läpp","die Augenbraue", "ögonbryn","das Auge", "öga","der Ellbogen", "armbåge","der Hals", "hals"};
+    public static List<string> wordList;
     // Start is called before the first frame update
     void Start()
     {
+        if (wordList == null)
+        {
+            wordList = CustomizeTranslate.localWordList[0];
+        }
         NewWord();
     }
 
@@ -53,4 +49,5 @@ public class WordTranslate : MonoBehaviour
         int translateNum = wordNum + 1;
         wordText.text = wordList[translateNum];
     }
+    
 }

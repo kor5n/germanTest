@@ -49,7 +49,7 @@ public class Nominativ : MonoBehaviour
         dieBut.image.color = Color.white;
         dasBut.image.color = Color.white;
         derBut.image.color = Color.white;
-        int nominativ = Random.Range(1, 3);
+        int nominativ = Random.Range(1, 4);
         if (nominativ == 1)
         {
             answer = "die";

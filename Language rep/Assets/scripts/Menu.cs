@@ -22,6 +22,7 @@ public class Menu : MonoBehaviour
     }
     void GoToTranslate()
     {
+        LoadTranslate();
         SceneManager.LoadScene("Translate");
     }
     void GoToNominativ()
@@ -31,5 +32,13 @@ public class Menu : MonoBehaviour
     void GoTOCustomTranslate()
     {
         SceneManager.LoadScene("CustomTranslate");
+    }
+
+    public void LoadTranslate()
+    {
+        TranslateData data = SaveSystem.LoadWordLists();
+
+        CustomizeTranslate.localWordList = data.wordLists;
+        CustomizeTranslate.localNameLists = data.listNames;
     }
 }
