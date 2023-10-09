@@ -1,2 +1,2 @@
 # germanTest
-App that I will use(using) for practicing german
+App that I will use(or am using) for practicing german
