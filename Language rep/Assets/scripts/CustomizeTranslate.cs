@@ -6,6 +6,11 @@ using UnityEngine.UI;
 
 public class CustomizeTranslate : MonoBehaviour
 {
+    [Header("Delete Words")]
+    public GameObject RemovingWords;
+    public Dropdown Words;
+    public Button RemoveWords;
+
     [Header("Add Word")]
     public GameObject AddWordsComponents;
     public InputField InputSvenska;
@@ -22,24 +27,26 @@ public class CustomizeTranslate : MonoBehaviour
     public Dropdown ChooseTest;
     public Button Delete;
     public Button Edit;
+    public Button DeleteWords;
 
-    private int choosedtest;
+    [Header("Create new test")]
+    public GameObject CreatingNew;
+    public InputField NewTestName;
+    public Button CreateNewTest;
+
+    private bool nowDelete;
+    private bool startDelete;
+    private string removingWords;
+    public static int choosedtest;
     private bool startEdit;
     private bool startChoose;
     public static List<List<string>> localWordList = new List<List<string>>();
     public static List<string> localNameLists = new List<string> {"deafult"};
-    public static List<string> defaultList = new List<string> {"der Kopf", "huvud","der Mund", "mun","das Gesichte", "ansikte","der Arm", "arm","die Hand", "hand","der Finger",
-
-         "finger","die Schulter", "axel","der Rücken", "rygg","der Bauch", "mage","das Bein", "ben","tut weh", "gör ont","gebrochen", "brutit",
-
-         "das Knie", "knä","der Oberschenkel", "lår","der Fuß", "fot","der Zeh", "tå","die Zehen", "tår","die Backe", "kind",
-
-         "die Narbe", "ärr","das Ohr", "öra","die Haare", "hår","die Stirn", "panna","der Bart", "skägg","die Nase", "näsa",
-
-         "die Lippe", "läpp","die Augenbraue", "ögonbryn","das Auge", "öga","der Ellbogen", "armbåge","der Hals", "hals"};
+    public static List<string> defaultList = new List<string> {};
     // Start is called before the first frame update
     void Start()
     {
+        startDelete = false;
         EditExsistingComponents.SetActive(false);
         AddWordsComponents.SetActive(false);
         StartComponents.SetActive(true);
@@ -47,6 +54,7 @@ public class CustomizeTranslate : MonoBehaviour
         startChoose = false;
         localWordList.Add(defaultList);
         EditExisted.onClick.AddListener(StartChoose);
+        CreateNew.onClick.AddListener(CreateNewSetup);
     }
 
     // Update is called once per frame
@@ -57,20 +65,30 @@ public class CustomizeTranslate : MonoBehaviour
         {
             SubmitBut.onClick.AddListener(AddTwoWords);
         }
+        if (startDelete)
+        {
+            RemoveWords.onClick.AddListener(NowDelete);
+        }
+        if (nowDelete)
+        {
+            WordsDelete();
+        }
     }
     void AddTwoWords()
     {
+        
         if (InputDeutsch.text != null && InputDeutsch.text != "" && InputSvenska.text != null && InputSvenska.text != "")
         {
+            FindTest();
+            Debug.Log(choosedtest);
             WordTranslate.wordList = localWordList[choosedtest];
-            localWordList.RemoveAt(choosedtest);
-            WordTranslate.wordList.Add(InputDeutsch.text);
-            WordTranslate.wordList.Add(InputSvenska.text);
-            localWordList.Insert(choosedtest, WordTranslate.wordList);
-            Debug.Log(WordTranslate.wordList);
+            localWordList[choosedtest].Add(InputDeutsch.text);
+            localWordList[choosedtest].Add(InputSvenska.text);
             InputDeutsch.text = "";
             InputSvenska.text = "";
             SaveTranslateList();
+            PrintAll();
+
         }
 
     }
@@ -90,27 +108,115 @@ public class CustomizeTranslate : MonoBehaviour
         if (startChoose)
         {
             Edit.onClick.AddListener(GoToAddWords);
-
+            Delete.onClick.AddListener(DeleteList);
+            DeleteWords.onClick.AddListener(WordsDeleteSetup);
         }
+        
     }
     void GoToAddWords()
     {
         startChoose = false;
         AddWordsComponents.SetActive(true);
-        for (int i=0; i>=localNameLists.Count(); i++)
-        {
-            if (localNameLists.Contains(ChooseTest.value.ToString()))
-            {
-                choosedtest = i;
-                break;
-            }
-        }
+        FindTest();
         EditExsistingComponents.SetActive(false);
         startEdit = true;
+    }
+    void DeleteList()
+    {
+        FindTest();
+        localNameLists.RemoveAt(choosedtest);
+        localWordList.RemoveAt(choosedtest);
+    }
+    void WordsDeleteSetup()
+    {
+        startChoose = false;
+
+        FindTest();
+        Debug.Log("Clicked");
+        EditExsistingComponents.SetActive(false);
+        RemovingWords.SetActive(true);
+        Words.ClearOptions();
+        foreach (string word in localWordList[choosedtest])
+        {
+            if(localWordList[choosedtest].IndexOf(word) % 2 != 0)
+            {
+                Words.options.Add(new Dropdown.OptionData() { text = localWordList[choosedtest][localWordList[choosedtest].IndexOf(word)-1] + '-' + word});
+            }
+        }
+        
+        
+        startDelete = true;
+
+
+    }
+    void WordsDelete()
+    {
+
+        Debug.Log(Words.options[Words.value].text + ":OPTION");
+        string[] deletingWords = Words.options[Words.value].text.Split("-");
+        Debug.Log(deletingWords[0]);
+        Debug.Log(deletingWords[1]);
+
+        localWordList[choosedtest].Remove(deletingWords[0]);
+        localWordList[choosedtest].Remove(deletingWords[1]);
+        PrintAll();
+        SaveTranslateList();
+
+        nowDelete = false;
+
+        WordTranslate.wordList = localWordList[choosedtest];
+
+        WordsDeleteSetup();
+
+
+    }
+    
+    void FindTest()
+    {
+        choosedtest = ChooseTest.value;
     }
     public void SaveTranslateList()
     {
         SaveSystem.SaveTranslateList();
+
+
+    }
+    void PrintAll()
+    {
+        Debug.Log(choosedtest);
+        foreach(string word in localWordList[choosedtest])
+        {
+            Debug.Log(word);
+        }
+        foreach(string list in localNameLists)
+        {
+            Debug.Log(list);
+        }
+        Debug.Log(localWordList.Count());
     }
     
+    void NowDelete()
+    {
+        nowDelete = true;
+    }
+    void CreateNewSetup()
+    {
+        FindTest();
+        StartComponents.SetActive(false);
+        CreatingNew.SetActive(true);
+
+        CreateNewTest.onClick.AddListener(Create);
+    }
+    void Create()
+    {
+
+        localNameLists.Add(NewTestName.text);
+        localWordList.Add(new List<string> {});
+        NewTestName.text = "";
+        choosedtest = localWordList.Count - 1;
+        PrintAll();
+        
+        SaveTranslateList();
+    }
+
 }

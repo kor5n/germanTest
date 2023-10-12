@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
+    
     public Button toNominativ, toTranslate, toCustomTranslate;
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,8 @@ public class Menu : MonoBehaviour
     void GoToTranslate()
     {
         LoadTranslate();
+
+
         SceneManager.LoadScene("Translate");
     }
     void GoToNominativ()
@@ -41,4 +44,5 @@ public class Menu : MonoBehaviour
         CustomizeTranslate.localWordList = data.wordLists;
         CustomizeTranslate.localNameLists = data.listNames;
     }
+    
 }

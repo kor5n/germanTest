@@ -14,12 +14,15 @@ public class WordTranslate : MonoBehaviour
     private bool makeNew;
     private int wordNum;
     public static List<string> wordList;
+
     // Start is called before the first frame update
     void Start()
     {
+        LoadTranslate();
         if (wordList == null)
         {
-            wordList = CustomizeTranslate.localWordList[0];
+            wordList = CustomizeTranslate.localWordList[CustomizeTranslate.choosedtest];
+
         }
         NewWord();
     }
@@ -33,7 +36,7 @@ public class WordTranslate : MonoBehaviour
             NewWord();
         }
         nextWord.onClick.AddListener(NewWord);
-        showTranslate.onClick.AddListener(Showtraslate);
+        showTranslate.onClick.AddListener(Showtranslate);
     }
     void NewWord()
     {
@@ -44,10 +47,18 @@ public class WordTranslate : MonoBehaviour
         }
         wordText.text = wordList[wordNum];
     }
-    void Showtraslate()
+    void Showtranslate()
     {
         int translateNum = wordNum + 1;
         wordText.text = wordList[translateNum];
     }
-    
+
+    public void LoadTranslate()
+    {
+        TranslateData data =  SaveSystem.LoadWordLists();
+
+        CustomizeTranslate.localWordList = data.wordLists;
+        CustomizeTranslate.localNameLists = data.listNames;
+    }
+
 }

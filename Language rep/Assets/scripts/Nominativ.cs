@@ -14,10 +14,11 @@ public class Nominativ : MonoBehaviour
     private string answer;
     private bool gotRight;
     public static List<string> die = new List<string>() {"Hand", "Schulter", "Zehen", "Backe", "Narbe", "Haare", "Stirn", "Nase", "Lippe",
-        "Augenbraue"};
+        "Augenbraue", "Nachbarn", "Leiche"};
     public static List<string> das = new List<string>() {"Gesichte", "Bein", "Ohr", "Auge", "Knie"};
-    public static List<string> der = new List<string>() { "Kopf", "Mund", "Arm", "Finger", "Rücken", "Bauch", "Oberschenkel", "Fuß",
-        "Zeh", "Bart","Ellbogen", "Hals" };
+    public static List<string> der = new List<string>() { "Kopf", "Mund", "Arm", "Finger", "Rücken", "Bauch", "Oberschenkel", "Fuß", "Bart",
+        "Ellbogen", "Hals", "Täter", "Flur"};
+        
     private Dictionary<string, List<string>> words = new Dictionary<string, List<string>>()
     {
         {"die", die},
