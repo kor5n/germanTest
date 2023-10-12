@@ -1,2 +1,2 @@
 # germanTest
-An app which helps you train german
+App that I will use(or am using) for practicing german
