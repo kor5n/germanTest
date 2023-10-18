@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class Menu : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Menu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        LoadTranslate();
         toNominativ.onClick.AddListener(GoToNominativ);
         toTranslate.onClick.AddListener(GoToTranslate);
         toCustomTranslate.onClick.AddListener(GoTOCustomTranslate);
@@ -43,6 +45,17 @@ public class Menu : MonoBehaviour
 
         CustomizeTranslate.localWordList = data.wordLists;
         CustomizeTranslate.localNameLists = data.listNames;
+
+        
+        foreach (string word in CustomizeTranslate.localWordList[CustomizeTranslate.choosedtest])
+        {
+            Debug.Log(word);
+        }
+        foreach (string list in CustomizeTranslate.localNameLists)
+        {
+            Debug.Log(list);
+        }
+        Debug.Log(CustomizeTranslate.localWordList.SelectMany(list => list).Distinct().Count());
     }
-    
+
 }

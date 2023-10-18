@@ -36,7 +36,6 @@ public class CustomizeTranslate : MonoBehaviour
 
     private bool nowDelete;
     private bool startDelete;
-    private string removingWords;
     public static int choosedtest;
     private bool startEdit;
     private bool startChoose;
@@ -52,7 +51,7 @@ public class CustomizeTranslate : MonoBehaviour
         StartComponents.SetActive(true);
         startEdit = false;
         startChoose = false;
-        localWordList.Add(defaultList);
+        //localWordList.Add(defaultList);
         EditExisted.onClick.AddListener(StartChoose);
         CreateNew.onClick.AddListener(CreateNewSetup);
     }
@@ -87,7 +86,6 @@ public class CustomizeTranslate : MonoBehaviour
             InputDeutsch.text = "";
             InputSvenska.text = "";
             SaveTranslateList();
-            PrintAll();
 
         }
 
@@ -125,17 +123,22 @@ public class CustomizeTranslate : MonoBehaviour
     {
         FindTest();
         localNameLists.RemoveAt(choosedtest);
+        Debug.Log("Deleted");
         localWordList.RemoveAt(choosedtest);
+
+        SaveTranslateList();
+        ChooseList();
     }
     void WordsDeleteSetup()
     {
         startChoose = false;
 
         FindTest();
-        Debug.Log("Clicked");
+        //Debug.Log("Clicked");
         EditExsistingComponents.SetActive(false);
         RemovingWords.SetActive(true);
         Words.ClearOptions();
+        PrintAll();
         foreach (string word in localWordList[choosedtest])
         {
             if(localWordList[choosedtest].IndexOf(word) % 2 != 0)
@@ -178,7 +181,7 @@ public class CustomizeTranslate : MonoBehaviour
     public void SaveTranslateList()
     {
         SaveSystem.SaveTranslateList();
-
+        PrintAll();
 
     }
     void PrintAll()
@@ -188,11 +191,12 @@ public class CustomizeTranslate : MonoBehaviour
         {
             Debug.Log(word);
         }
-        foreach(string list in localNameLists)
+        foreach (string list in localNameLists)
         {
             Debug.Log(list);
         }
-        Debug.Log(localWordList.Count());
+        Debug.Log(localWordList.SelectMany(list => list).Distinct().Count());
+
     }
     
     void NowDelete()
@@ -214,9 +218,8 @@ public class CustomizeTranslate : MonoBehaviour
         localWordList.Add(new List<string> {});
         NewTestName.text = "";
         choosedtest = localWordList.Count - 1;
-        PrintAll();
-        
         SaveTranslateList();
+        
     }
 
 }
