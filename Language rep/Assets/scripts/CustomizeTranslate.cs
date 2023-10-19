@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CustomizeTranslate : MonoBehaviour
 {
@@ -127,7 +128,7 @@ public class CustomizeTranslate : MonoBehaviour
         localWordList.RemoveAt(choosedtest);
 
         SaveTranslateList();
-        ChooseList();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     void WordsDeleteSetup()
     {
@@ -217,7 +218,7 @@ public class CustomizeTranslate : MonoBehaviour
         localNameLists.Add(NewTestName.text);
         localWordList.Add(new List<string> {});
         NewTestName.text = "";
-        choosedtest = localWordList.Count - 1;
+        choosedtest = localNameLists.Count - 1;
         SaveTranslateList();
         
     }
