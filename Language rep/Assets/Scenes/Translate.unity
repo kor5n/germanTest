@@ -457,8 +457,6 @@ MonoBehaviour:
   showTranslate: {fileID: 1838670121}
   nextWord: {fileID: 505806489}
   wordText: {fileID: 2631464622534740998}
-  chooseTestDrop: {fileID: 0}
-  reload: {fileID: 0}
 --- !u!1 &818153355
 GameObject:
   m_ObjectHideFlags: 0
