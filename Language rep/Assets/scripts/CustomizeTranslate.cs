@@ -22,6 +22,7 @@ public class CustomizeTranslate : MonoBehaviour
     public GameObject StartComponents;
     public Button CreateNew;
     public Button EditExisted;
+    public Button LoadTest;
 
     [Header("EditExisting")]
     public GameObject EditExsistingComponents;
@@ -55,7 +56,9 @@ public class CustomizeTranslate : MonoBehaviour
         //localWordList.Add(defaultList);
         EditExisted.onClick.AddListener(StartChoose);
         CreateNew.onClick.AddListener(CreateNewSetup);
+        LoadTest.onClick.AddListener(LoadTranslate);
     }
+    
 
     // Update is called once per frame
     void Update()
@@ -221,6 +224,24 @@ public class CustomizeTranslate : MonoBehaviour
         choosedtest = localNameLists.Count - 1;
         SaveTranslateList();
         
+    }
+    public void LoadTranslate()
+    {
+        TranslateData data = SaveSystem.LoadWordLists();
+
+        CustomizeTranslate.localWordList = data.wordLists;
+        CustomizeTranslate.localNameLists = data.listNames;
+
+
+        foreach (string word in CustomizeTranslate.localWordList[CustomizeTranslate.choosedtest])
+        {
+            Debug.Log(word);
+        }
+        foreach (string list in CustomizeTranslate.localNameLists)
+        {
+            Debug.Log(list);
+        }
+        Debug.Log(CustomizeTranslate.localWordList.SelectMany(list => list).Distinct().Count());
     }
 
 }

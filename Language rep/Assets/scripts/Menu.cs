@@ -12,7 +12,6 @@ public class Menu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        LoadTranslate();
         toNominativ.onClick.AddListener(GoToNominativ);
         toTranslate.onClick.AddListener(GoToTranslate);
         toCustomTranslate.onClick.AddListener(GoTOCustomTranslate);
@@ -26,8 +25,6 @@ public class Menu : MonoBehaviour
     void GoToTranslate()
     {
         LoadTranslate();
-
-
         SceneManager.LoadScene("Translate");
     }
     void GoToNominativ()
