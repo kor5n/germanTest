@@ -48,11 +48,13 @@ public class Menu : MonoBehaviour
         {
             Debug.Log(word);
         }
+    
         foreach (string list in CustomizeTranslate.localNameLists)
         {
             Debug.Log(list);
         }
         Debug.Log(CustomizeTranslate.localWordList.SelectMany(list => list).Distinct().Count());
+        CustomizeTranslate.testLoaded = true;
     }
 
 }

@@ -22,6 +22,7 @@ public class CustomizeTranslate : MonoBehaviour
     public GameObject StartComponents;
     public Button CreateNew;
     public Button EditExisted;
+    public GameObject LoadTestGroup;
     public Button LoadTest;
 
     [Header("EditExisting")]
@@ -42,8 +43,8 @@ public class CustomizeTranslate : MonoBehaviour
     private bool startEdit;
     private bool startChoose;
     public static List<List<string>> localWordList = new List<List<string>>();
-    public static List<string> localNameLists = new List<string> {"deafult"};
-    public static List<string> defaultList = new List<string> {};
+    public static List<string> localNameLists = new List<string>();
+    public static bool testLoaded;
     // Start is called before the first frame update
     void Start()
     {
@@ -76,6 +77,10 @@ public class CustomizeTranslate : MonoBehaviour
         {
             WordsDelete();
         }
+        if(testLoaded)
+        {
+            LoadTestGroup.SetActive(false);
+        }
     }
     void AddTwoWords()
     {
@@ -84,11 +89,11 @@ public class CustomizeTranslate : MonoBehaviour
         {
             FindTest();
             Debug.Log(choosedtest);
-            WordTranslate.wordList = localWordList[choosedtest];
             localWordList[choosedtest].Add(InputDeutsch.text);
             localWordList[choosedtest].Add(InputSvenska.text);
             InputDeutsch.text = "";
             InputSvenska.text = "";
+            WordTranslate.wordList = localWordList[choosedtest];
             SaveTranslateList();
 
         }
@@ -142,7 +147,7 @@ public class CustomizeTranslate : MonoBehaviour
         EditExsistingComponents.SetActive(false);
         RemovingWords.SetActive(true);
         Words.ClearOptions();
-        PrintAll();
+        //PrintAll();
         foreach (string word in localWordList[choosedtest])
         {
             if(localWordList[choosedtest].IndexOf(word) % 2 != 0)
@@ -166,12 +171,11 @@ public class CustomizeTranslate : MonoBehaviour
 
         localWordList[choosedtest].Remove(deletingWords[0]);
         localWordList[choosedtest].Remove(deletingWords[1]);
-        PrintAll();
+        //PrintAll();
+        WordTranslate.wordList = localWordList[choosedtest];
         SaveTranslateList();
 
         nowDelete = false;
-
-        WordTranslate.wordList = localWordList[choosedtest];
 
         WordsDeleteSetup();
 
@@ -185,7 +189,7 @@ public class CustomizeTranslate : MonoBehaviour
     public void SaveTranslateList()
     {
         SaveSystem.SaveTranslateList();
-        PrintAll();
+        //PrintAll();
 
     }
     void PrintAll()
@@ -242,6 +246,7 @@ public class CustomizeTranslate : MonoBehaviour
             Debug.Log(list);
         }
         Debug.Log(CustomizeTranslate.localWordList.SelectMany(list => list).Distinct().Count());
+        testLoaded = true;
     }
 
 }

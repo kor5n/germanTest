@@ -1600,8 +1600,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1213995920}
-  m_Father: {fileID: 1290622924}
-  m_RootOrder: 2
+  m_Father: {fileID: 736859378}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2332,6 +2332,43 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 728111327}
   m_CullTransparentMesh: 1
+--- !u!1 &736859377
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 736859378}
+  m_Layer: 5
+  m_Name: LoadtestGroup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &736859378
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736859377}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 538480573}
+  m_Father: {fileID: 1290622924}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &747038340
 GameObject:
   m_ObjectHideFlags: 0
@@ -4350,7 +4387,7 @@ RectTransform:
   m_Children:
   - {fileID: 1501670554}
   - {fileID: 554625620}
-  - {fileID: 538480573}
+  - {fileID: 736859378}
   m_Father: {fileID: 1655035149}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5266,6 +5303,7 @@ MonoBehaviour:
   StartComponents: {fileID: 1290622923}
   CreateNew: {fileID: 1501670555}
   EditExisted: {fileID: 554625621}
+  LoadTestGroup: {fileID: 736859377}
   LoadTest: {fileID: 538480574}
   EditExsistingComponents: {fileID: 1823490796}
   ChooseTest: {fileID: 437014790}

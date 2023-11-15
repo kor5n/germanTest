@@ -22,7 +22,6 @@ public class WordTranslate : MonoBehaviour
         if (wordList == null)
         {
             wordList = CustomizeTranslate.localWordList[CustomizeTranslate.choosedtest];
-
         }
         NewWord();
     }
