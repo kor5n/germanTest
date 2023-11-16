@@ -248,5 +248,5 @@ public class CustomizeTranslate : MonoBehaviour
         Debug.Log(CustomizeTranslate.localWordList.SelectMany(list => list).Distinct().Count());
         testLoaded = true;
     }
-
+  
 }
