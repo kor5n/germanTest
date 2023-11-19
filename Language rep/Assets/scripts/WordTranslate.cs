@@ -18,7 +18,8 @@ public class WordTranslate : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        nextWord.onClick.AddListener(NewWord);
+        showTranslate.onClick.AddListener(Showtranslate);
         if (wordList == null)
         {
             wordList = CustomizeTranslate.localWordList[CustomizeTranslate.choosedtest];
@@ -34,8 +35,7 @@ public class WordTranslate : MonoBehaviour
             makeNew = false;
             NewWord();
         }
-        nextWord.onClick.AddListener(NewWord);
-        showTranslate.onClick.AddListener(Showtranslate);
+        
     }
     void NewWord()
     {

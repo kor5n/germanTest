@@ -38,9 +38,7 @@ public class CustomizeTranslate : MonoBehaviour
     public Button CreateNewTest;
 
     private bool nowDelete;
-    private bool startDelete;
     public static int choosedtest;
-    private bool startEdit;
     private bool startChoose;
     public static List<List<string>> localWordList = new List<List<string>>();
     public static List<string> localNameLists = new List<string>();
@@ -48,31 +46,26 @@ public class CustomizeTranslate : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startDelete = false;
         EditExsistingComponents.SetActive(false);
         AddWordsComponents.SetActive(false);
         StartComponents.SetActive(true);
-        startEdit = false;
         startChoose = false;
         //localWordList.Add(defaultList);
         EditExisted.onClick.AddListener(StartChoose);
         CreateNew.onClick.AddListener(CreateNewSetup);
         LoadTest.onClick.AddListener(LoadTranslate);
+        SubmitBut.onClick.AddListener(AddTwoWords);
+        RemoveWords.onClick.AddListener(NowDelete);
+        Edit.onClick.AddListener(GoToAddWords);
+        Delete.onClick.AddListener(DeleteList);
+        DeleteWords.onClick.AddListener(WordsDeleteSetup);
+        CreateNewTest.onClick.AddListener(Create);
     }
     
 
     // Update is called once per frame
     void Update()
     {
-        ChooseList();
-        if (startEdit)
-        {
-            SubmitBut.onClick.AddListener(AddTwoWords);
-        }
-        if (startDelete)
-        {
-            RemoveWords.onClick.AddListener(NowDelete);
-        }
         if (nowDelete)
         {
             WordsDelete();
@@ -114,9 +107,7 @@ public class CustomizeTranslate : MonoBehaviour
     {
         if (startChoose)
         {
-            Edit.onClick.AddListener(GoToAddWords);
-            Delete.onClick.AddListener(DeleteList);
-            DeleteWords.onClick.AddListener(WordsDeleteSetup);
+            
         }
         
     }
@@ -126,7 +117,6 @@ public class CustomizeTranslate : MonoBehaviour
         AddWordsComponents.SetActive(true);
         FindTest();
         EditExsistingComponents.SetActive(false);
-        startEdit = true;
     }
     void DeleteList()
     {
@@ -157,7 +147,6 @@ public class CustomizeTranslate : MonoBehaviour
         }
         
         
-        startDelete = true;
 
 
     }
@@ -217,7 +206,7 @@ public class CustomizeTranslate : MonoBehaviour
         StartComponents.SetActive(false);
         CreatingNew.SetActive(true);
 
-        CreateNewTest.onClick.AddListener(Create);
+        
     }
     void Create()
     {

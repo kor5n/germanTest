@@ -28,6 +28,9 @@ public class Nominativ : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        dieBut.onClick.AddListener(DieBut);
+        dasBut.onClick.AddListener(DasBut);
+        derBut.onClick.AddListener(DerBut);
         dieBut.GetComponent<Image>();
         dasBut.GetComponent<Image>();
         derBut.GetComponent<Image>();
@@ -55,25 +58,17 @@ public class Nominativ : MonoBehaviour
         {
             answer = "die";
             wordText.text = words["die"][Random.Range(0, die.Count())];
-            dieBut.onClick.AddListener(DieBut);
-            dasBut.onClick.AddListener(DasBut);
-            derBut.onClick.AddListener(DerBut);
         }
         else if (nominativ == 2)
         {
             answer = "das";
             wordText.text = words["das"][Random.Range(0, das.Count())];
-            dieBut.onClick.AddListener(DieBut);
-            dasBut.onClick.AddListener(DasBut);
-            derBut.onClick.AddListener(DerBut);
+            
         }
         else if (nominativ == 3)
         {
             answer = "der";
             wordText.text = words["der"][Random.Range(0, der.Count())];
-            dieBut.onClick.AddListener(DieBut);
-            dasBut.onClick.AddListener(DasBut);
-            derBut.onClick.AddListener(DerBut);
         }
     }
     void DieBut()
