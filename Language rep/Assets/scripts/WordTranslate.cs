@@ -7,10 +7,15 @@ using UnityEngine.UI;
 public class WordTranslate : MonoBehaviour
 {
     [Header("Components")]
+    public GameObject TranslateComponents;
     public Button showTranslate;
     public Button nextWord;
     public Text wordText;
+    public GameObject StartObjects;
+    public Button ChooseTestBtn;
+    public Dropdown TestList;
 
+    private int practiceTest;
     private bool makeNew;
     private int wordNum;
     public static List<string> wordList;
@@ -18,13 +23,11 @@ public class WordTranslate : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        nextWord.onClick.AddListener(NewWord);
-        showTranslate.onClick.AddListener(Showtranslate);
-        if (wordList == null)
+        foreach (string list in CustomizeTranslate.localNameLists)
         {
-            wordList = CustomizeTranslate.localWordList[CustomizeTranslate.choosedtest];
+            TestList.options.Add(new Dropdown.OptionData() { text = list });
         }
-        NewWord();
+        ChooseTestBtn.onClick.AddListener(ChoosePracticetest);
     }
 
     // Update is called once per frame
@@ -51,7 +54,16 @@ public class WordTranslate : MonoBehaviour
         int translateNum = wordNum + 1;
         wordText.text = wordList[translateNum];
     }
-
+    void ChoosePracticetest()
+    {
+        practiceTest = TestList.value;
+        wordList = CustomizeTranslate.localWordList[practiceTest];
+        StartObjects.SetActive(false);
+        TranslateComponents.SetActive(true);
+        nextWord.onClick.AddListener(NewWord);
+        showTranslate.onClick.AddListener(Showtranslate);
+        NewWord();
+    }
     
 
 }

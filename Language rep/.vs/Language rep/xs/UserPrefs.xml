@@ -1,19 +1,16 @@
 ﻿<Properties StartupConfiguration="{14DAEFA6-85FE-BA33-4CDD-5B61B4550E8E}|">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="0439dfc8-24d0-4bd7-97f8-4575a4d1048b" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/CustomizeTranslate.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/SaveSystem.cs">
     <Files>
-      <File FileName="Assets/scripts/WordTranslate.cs" />
-      <File FileName="Assets/scripts/CustomizeTranslate.cs" Line="150" Column="1" />
-      <File FileName="Assets/scripts/GoBack.cs" />
-      <File FileName="Assets/scripts/Menu.cs" />
-      <File FileName="Assets/scripts/Nominativ.cs" />
-      <File FileName="Assets/scripts/SaveSystem.cs" />
+      <File FileName="Assets/scripts/WordTranslate.cs" Line="22" Column="58" />
+      <File FileName="Assets/scripts/CustomizeTranslate.cs" Line="1" Column="1" />
+      <File FileName="Assets/scripts/GoBack.cs" Line="1" Column="1" />
+      <File FileName="Assets/scripts/Menu.cs" Line="1" Column="1" />
+      <File FileName="Assets/scripts/Nominativ.cs" Line="71" Column="72" />
+      <File FileName="Assets/scripts/SaveSystem.cs" Line="1" Column="1" />
       <File FileName="Assets/scripts/TranslateData.cs" />
     </Files>
     <Pads>
@@ -21,11 +18,16 @@
         <State name="__root__">
           <Node name="Language rep">
             <Node name="Assets" expanded="True">
-              <Node name="scripts" expanded="True" />
+              <Node name="scripts" expanded="True">
+                <Node name="SaveSystem.cs" selected="True" />
+              </Node>
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="c1ff8a41-93c9-4456-9b0a-89232bb4fbbc" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>
