@@ -39,7 +39,6 @@ public class CustomizeTranslate : MonoBehaviour
 
     private bool nowDelete;
     public static int choosedtest;
-    private bool startChoose;
     public static List<List<string>> localWordList = new List<List<string>>();
     public static List<string> localNameLists = new List<string>();
     public static bool testLoaded;
@@ -49,7 +48,6 @@ public class CustomizeTranslate : MonoBehaviour
         EditExsistingComponents.SetActive(false);
         AddWordsComponents.SetActive(false);
         StartComponents.SetActive(true);
-        startChoose = false;
         //localWordList.Add(defaultList);
         EditExisted.onClick.AddListener(StartChoose);
         CreateNew.onClick.AddListener(CreateNewSetup);
@@ -101,19 +99,9 @@ public class CustomizeTranslate : MonoBehaviour
         {
             ChooseTest.options.Add(new Dropdown.OptionData() { text = list});
         }
-        startChoose = true;
-    }
-    void ChooseList()
-    {
-        if (startChoose)
-        {
-            
-        }
-        
     }
     void GoToAddWords()
     {
-        startChoose = false;
         AddWordsComponents.SetActive(true);
         FindTest();
         EditExsistingComponents.SetActive(false);
@@ -130,7 +118,6 @@ public class CustomizeTranslate : MonoBehaviour
     }
     void WordsDeleteSetup()
     {
-        startChoose = false;
 
         FindTest();
         //Debug.Log("Clicked");

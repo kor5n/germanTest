@@ -28,6 +28,7 @@ public class Nominativ : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        words = CustomizeNominativ.localTestList[CustomizeNominativ.myTest];
         dieBut.onClick.AddListener(DieBut);
         dasBut.onClick.AddListener(DasBut);
         derBut.onClick.AddListener(DerBut);
