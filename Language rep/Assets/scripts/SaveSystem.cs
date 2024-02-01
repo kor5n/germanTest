@@ -33,4 +33,34 @@ public class SaveSystem
             return null;
         }
     }
+    public static void SaveNominativList()
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/WordNominativ.fun";
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        NominativData data = new NominativData();
+
+        formatter.Serialize(stream, data);
+        stream.Close();
+    }
+    public static NominativData LoadNominativLists()
+    {
+        string path = Application.persistentDataPath + "/WordNominativ.fun";
+        if (File.Exists(path))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.Open);
+
+            NominativData data = formatter.Deserialize(stream) as NominativData;
+            stream.Close();
+
+            return data;
+        }
+        else
+        {
+            Debug.LogError("Save file not found in" + path);
+            return null;
+        }
+    }
 }

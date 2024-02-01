@@ -37,7 +37,6 @@ public class CustomizeTranslate : MonoBehaviour
     public InputField NewTestName;
     public Button CreateNewTest;
 
-    private bool nowDelete;
     public static int choosedtest;
     public static List<List<string>> localWordList = new List<List<string>>();
     public static List<string> localNameLists = new List<string>();
@@ -53,7 +52,7 @@ public class CustomizeTranslate : MonoBehaviour
         CreateNew.onClick.AddListener(CreateNewSetup);
         LoadTest.onClick.AddListener(LoadTranslate);
         SubmitBut.onClick.AddListener(AddTwoWords);
-        RemoveWords.onClick.AddListener(NowDelete);
+        RemoveWords.onClick.AddListener(WordsDelete);
         Edit.onClick.AddListener(GoToAddWords);
         Delete.onClick.AddListener(DeleteList);
         DeleteWords.onClick.AddListener(WordsDeleteSetup);
@@ -64,10 +63,6 @@ public class CustomizeTranslate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (nowDelete)
-        {
-            WordsDelete();
-        }
         if(testLoaded)
         {
             LoadTestGroup.SetActive(false);
@@ -148,10 +143,8 @@ public class CustomizeTranslate : MonoBehaviour
         localWordList[choosedtest].Remove(deletingWords[0]);
         localWordList[choosedtest].Remove(deletingWords[1]);
         //PrintAll();
-        WordTranslate.wordList = localWordList[choosedtest];
         SaveTranslateList();
 
-        nowDelete = false;
 
         WordsDeleteSetup();
 
@@ -183,10 +176,6 @@ public class CustomizeTranslate : MonoBehaviour
 
     }
     
-    void NowDelete()
-    {
-        nowDelete = true;
-    }
     void CreateNewSetup()
     {
         FindTest();
@@ -197,12 +186,15 @@ public class CustomizeTranslate : MonoBehaviour
     }
     void Create()
     {
-
-        localNameLists.Add(NewTestName.text);
-        localWordList.Add(new List<string> {});
-        NewTestName.text = "";
-        choosedtest = localNameLists.Count - 1;
-        SaveTranslateList();
+        if (NewTestName.text != null && NewTestName.text != "" && localNameLists.Contains(NewTestName.text) == false)
+        {
+            localNameLists.Add(NewTestName.text);
+            localWordList.Add(new List<string> { });
+            NewTestName.text = "";
+            choosedtest = localNameLists.Count - 1;
+            SaveTranslateList();
+        }
+        
         
     }
     public void LoadTranslate()

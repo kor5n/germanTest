@@ -29,6 +29,12 @@ public class Nominativ : MonoBehaviour
     void Start()
     {
         words = CustomizeNominativ.localTestList[CustomizeNominativ.myTest];
+        for (int i = 0; i < words["der"].Count; i++)
+        {
+            Debug.Log(words["das"][i]);
+            Debug.Log(words["die"][i]);
+            Debug.Log(words["der"][i]);
+        }
         dieBut.onClick.AddListener(DieBut);
         dasBut.onClick.AddListener(DasBut);
         derBut.onClick.AddListener(DerBut);
@@ -58,18 +64,18 @@ public class Nominativ : MonoBehaviour
         if (nominativ == 1)
         {
             answer = "die";
-            wordText.text = words["die"][Random.Range(0, die.Count())];
+            wordText.text = words["die"][Random.Range(0, words["die"].Count())];
         }
         else if (nominativ == 2)
         {
             answer = "das";
-            wordText.text = words["das"][Random.Range(0, das.Count())];
+            wordText.text = words["das"][Random.Range(0, words["das"].Count())];
             
         }
         else if (nominativ == 3)
         {
             answer = "der";
-            wordText.text = words["der"][Random.Range(0, der.Count())];
+            wordText.text = words["der"][Random.Range(0, words["der"].Count())];
         }
     }
     void DieBut()

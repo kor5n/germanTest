@@ -8,13 +8,14 @@ using System.Linq;
 public class Menu : MonoBehaviour
 {
     
-    public Button toNominativ, toTranslate, toCustomTranslate;
+    public Button toNominativ, toTranslate, toCustomTranslate, toCustomNominativ;
     // Start is called before the first frame update
     void Start()
     {
         toNominativ.onClick.AddListener(GoToNominativ);
         toTranslate.onClick.AddListener(GoToTranslate);
-        toCustomTranslate.onClick.AddListener(GoTOCustomTranslate);
+        toCustomTranslate.onClick.AddListener(GoToCustomTranslate);
+        toCustomNominativ.onClick.AddListener(GoToCustomNominativ);
     }
 
     // Update is called once per frame
@@ -31,11 +32,14 @@ public class Menu : MonoBehaviour
     {
         SceneManager.LoadScene("diederdas");
     }
-    void GoTOCustomTranslate()
+    void GoToCustomTranslate()
     {
         SceneManager.LoadScene("CustomTranslate");
     }
-
+    void GoToCustomNominativ()
+    {
+        SceneManager.LoadScene("CustomizeNominativ");
+    }
     public void LoadTranslate()
     {
         TranslateData data = SaveSystem.LoadWordLists();
