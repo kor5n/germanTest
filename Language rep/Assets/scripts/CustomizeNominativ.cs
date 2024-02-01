@@ -56,7 +56,7 @@ public class CustomizeNominativ : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        localTestList.Add(deafultDict);
+        //localTestList.Add(deafultDict);
 
         EditTest.onClick.AddListener(EditSetup);
         CreateTest.onClick.AddListener(CreateNewSetup);
