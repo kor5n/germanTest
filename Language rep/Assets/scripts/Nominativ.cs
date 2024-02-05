@@ -7,9 +7,15 @@ using UnityEngine.UI;
 public class Nominativ : MonoBehaviour
 {
     [Header("Components")]
+    public GameObject MainComponents;
     public Text wordText;
     public Button dieBut, dasBut, derBut, nextWordBut;
     public GameObject nextWord;
+
+    [Header("Start Components")]
+    public GameObject StartComponents;
+    public Dropdown ChooseTest;
+    public Button ChooseBtn;
 
     private string answer;
     private bool gotRight;
@@ -28,20 +34,16 @@ public class Nominativ : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        words = CustomizeNominativ.localTestList[CustomizeNominativ.myTest];
-        for (int i = 0; i < words["der"].Count; i++)
+        foreach(string name in CustomizeNominativ.localTestNames)
         {
-            Debug.Log(words["das"][i]);
-            Debug.Log(words["die"][i]);
-            Debug.Log(words["der"][i]);
+            ChooseTest.options.Add(new Dropdown.OptionData {text = name});
         }
+        //words = CustomizeNominativ.localTestList[CustomizeNominativ.myTest];
         dieBut.onClick.AddListener(DieBut);
         dasBut.onClick.AddListener(DasBut);
         derBut.onClick.AddListener(DerBut);
-        dieBut.GetComponent<Image>();
-        dasBut.GetComponent<Image>();
-        derBut.GetComponent<Image>();
-        CreateWord();
+        nextWordBut.onClick.AddListener(CreateWord);
+        ChooseBtn.onClick.AddListener(PlayTest);
     }
 
     // Update is called once per frame
@@ -50,7 +52,6 @@ public class Nominativ : MonoBehaviour
         if(gotRight == true)
         {
             nextWord.SetActive(true);
-            nextWordBut.onClick.AddListener(CreateWord);
         }
     }
     void CreateWord()
@@ -113,5 +114,12 @@ public class Nominativ : MonoBehaviour
         {
             derBut.image.color = Color.red;
         }
+    }
+    private void PlayTest()
+    {
+        words = CustomizeNominativ.localTestList[ChooseTest.value];
+        StartComponents.SetActive(false);
+        MainComponents.SetActive(true);
+        CreateWord();
     }
 }

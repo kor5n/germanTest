@@ -41,9 +41,9 @@ public class CustomizeNominativ : MonoBehaviour
     public Button RemoveDie;
     public Button RemoveAll;
 
-    private bool loaded;
+    public static bool loaded;
     public static List<Dictionary<string, List<string>>> localTestList = new List<Dictionary<string, List<string>>> { };
-    public static List<string> localTestNames = new List<string> { "deafult" };
+    public static List<string> localTestNames = new List<string> { };
     private Dictionary<string, List<string>> deafultDict = new Dictionary<string, List<string>>()
     {
         {"die", new List<string>{"Hand", "Schulter", "Zehen", "Backe", "Narbe", "Haare", "Stirn", "Nase", "Lippe",
@@ -56,11 +56,12 @@ public class CustomizeNominativ : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         //localTestList.Add(deafultDict);
 
         EditTest.onClick.AddListener(EditSetup);
         CreateTest.onClick.AddListener(CreateNewSetup);
-        //LoadTestBtn.onClick.AddListener(LoadTest);
+        LoadTestBtn.onClick.AddListener(LoadTest);
 
         AddWords.onClick.AddListener(AddWordsSetup);
         DeleteTestBtn.onClick.AddListener(DeleteTest);
