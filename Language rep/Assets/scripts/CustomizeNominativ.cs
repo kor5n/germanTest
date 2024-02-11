@@ -192,7 +192,7 @@ public class CustomizeNominativ : MonoBehaviour
     {
         FindTest();
         //Debug.Log("Clicked");
-        StartComponents.SetActive(false);
+        EditComponents.SetActive(false);
         RemovingWordsComponents.SetActive(true);
         WordsDie.ClearOptions();
         WordsDas.ClearOptions();

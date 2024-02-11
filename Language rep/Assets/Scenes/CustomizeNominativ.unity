@@ -8971,14 +8971,14 @@ MonoBehaviour:
   CreateNewCmoponents: {fileID: 2056018497}
   NewTestName: {fileID: 1210662090}
   CreateNewBtn: {fileID: 256324298}
-  RemovingWordsComponents: {fileID: 0}
-  WordsDie: {fileID: 0}
-  WordsDas: {fileID: 0}
-  WordsDer: {fileID: 0}
-  RemoveDer: {fileID: 0}
-  RemoveDas: {fileID: 0}
-  RemoveDie: {fileID: 0}
-  RemoveAll: {fileID: 0}
+  RemovingWordsComponents: {fileID: 1910847152}
+  WordsDie: {fileID: 1677676180}
+  WordsDas: {fileID: 403479203}
+  WordsDer: {fileID: 50069649}
+  RemoveDer: {fileID: 2005700095}
+  RemoveDas: {fileID: 1181752805}
+  RemoveDie: {fileID: 662361748}
+  RemoveAll: {fileID: 1554955402}
 --- !u!1 &2041908573
 GameObject:
   m_ObjectHideFlags: 0
